@@ -1,1 +1,48 @@
-<view class="page"></view>
+<navigation-bar title="编辑信息" showBack="{{true}}"></navigation-bar>
+
+<view class="page">
+  <view class="upload-section">
+    <view class="upload-area" bindtap="onChooseImage">
+      <view class="upload-icon" wx:if="{{!petImage}}"></view>
+      <image wx:if="{{petImage}}" src="{{petImage}}" mode="aspectFill" class="upload-preview"></image>
+      <text class="upload-title" wx:if="{{!petImage}}">添加宠物图片</text>
+      <text class="upload-desc" wx:if="{{!petImage}}">图片将展示在App首页</text>
+    </view>
+  </view>
+
+  <view class="name-section">
+    <view class="name-row">
+      <text class="name-label">名称</text>
+      <input class="name-input" placeholder="请输入名称" placeholder-class="name-placeholder" value="{{petName}}" bindinput="onNameInput" />
+    </view>
+  </view>
+
+  <view class="info-section">
+    <view class="info-row">
+      <text class="info-label">品种</text>
+      <view class="info-select" bindtap="onChooseBreed">
+        <text class="{{breed ? 'info-value' : 'info-placeholder'}}">{{breed || '请选择'}}</text>
+        <image class="info-arrow" src="/images/arrow.png" mode="aspectFit" />
+      </view>
+    </view>
+    <view class="info-row">
+      <text class="info-label">性别</text>
+      <radio-group class="info-radio-group" bindchange="onGenderChange">
+        <label class="info-radio-item {{gender === 'male' ? 'active' : ''}}">
+          <radio value="male" checked="{{gender === 'male'}}" hidden />公</label>
+        <label class="info-radio-item {{gender === 'female' ? 'active' : ''}}">
+          <radio value="female" checked="{{gender === 'female'}}" hidden />母</label>
+      </radio-group>
+    </view>
+    <view class="info-row">
+      <text class="info-label">是否绝育</text>
+      <radio-group class="info-radio-group" bindchange="onNeuteredChange">
+        <label class="info-radio-item {{neutered === 'yes' ? 'active' : ''}}">
+          <radio value="yes" checked="{{neutered === 'yes'}}" hidden />已绝育</label>
+        <label class="info-radio-item {{neutered === 'no' ? 'active' : ''}}">
+          <radio value="no" checked="{{neutered === 'no'}}" hidden />未绝育</label>
+      </radio-group>
+    </view>
+  </view>
+</view>
+

@@ -3,7 +3,7 @@
   "projectname": "cat2",
   "setting": {
     "compileHotReLoad": true,
-    "skylineRenderEnable": true,
+    "skylineRenderEnable": false,
     "urlCheck": true,
     "coverView": true,
     "lazyloadPlaceholderEnable": false,
@@ -18,5 +18,5 @@
     "checkInvalidKey": true,
     "ignoreDevUnusedFiles": true
   },
-  "libVersion": "3.16.0"
+  "libVersion": "3.15.2"
 }
