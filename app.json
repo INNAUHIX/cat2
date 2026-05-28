@@ -1,8 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/add-pet/index",
-    "pages/logs/logs"
+    "pages/add-pet/index"
   ],
   "window": {
     "navigationBarTitleText": "",

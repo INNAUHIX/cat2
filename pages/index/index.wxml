@@ -1,7 +1,14 @@
 <navigation-bar title="保险箱" showBack="{{false}}"></navigation-bar>
 <view class="page">
   <view class="content">
-    <view class="add-pet-header" bindtap="onAddPetTap">
+    <view class="pet-header" bindtap="onAddPetTap" wx:if="{{petImage}}">
+      <image class="pet-header-image" src="{{petImage}}" mode="aspectFill"></image>
+      <view class="pet-info-overlay">
+        <text class="pet-info-name">{{petName}}</text>
+        <text class="pet-info-days">{{daysWithPet}}天陪伴</text>
+      </view>
+    </view>
+    <view class="add-pet-header" bindtap="onAddPetTap" wx:else>
       <view class="entry-title-row">
         <text class="entry-title">添加宠物</text>
         <view class="add-icon" aria-role="button" aria-label="添加宠物"></view>
