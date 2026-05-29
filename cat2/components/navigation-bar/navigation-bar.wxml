@@ -1,0 +1,12 @@
+<view class="nav-bar">
+  <view class="nav-bar__status" style="height: {{statusBarHeight}}px;"></view>
+  <view class="nav-bar__content">
+    <view class="nav-bar__left">
+      <view class="nav-bar__back" bindtap="onBack" wx:if="{{showBack}}">
+  <image class="back-arrow" src="/images/back.png" mode="aspectFit"></image>
+</view>
+    </view>
+    <view class="nav-bar__title" style="color: {{color}};">{{title}}</view>
+    <view class="nav-bar__right"></view>
+  </view>
+</view>

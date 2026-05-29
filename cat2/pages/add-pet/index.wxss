@@ -1,0 +1,526 @@
+page {
+  min-height: 100vh;
+  background: #F7F7F7;
+}
+
+.page {
+  width: 100%;
+  padding-bottom: 220rpx;
+}
+
+.upload-section {
+  margin: 24rpx 32rpx 24rpx 32rpx;
+  height: 386rpx;
+  border-radius: 22px;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 16.6px 2px rgba(0, 0, 0, 0.01);
+}
+
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-icon {
+  width: 38px;
+  height: 38px;
+  background: #D9D9D9;
+  border-radius: 8rpx;
+  margin-bottom: 24rpx;
+}
+
+.upload-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 8rpx;
+}
+
+.upload-desc {
+  font-size: 24rpx;
+  color: #999999;
+  margin-top: 2px;
+}
+
+.upload-preview {
+  width: 100%;
+  height: 100%;
+  border-radius: 22px;
+}
+
+.name-section {
+  margin: 0 32rpx 24rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: 22px;
+}
+
+.name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 39rpx 32rpx;
+}
+
+.name-label {
+  font-size: 28rpx;
+  color: #000000;
+}
+
+.name-input {
+  font-size: 28rpx;
+  color: #000000;
+  text-align: right;
+  flex: 1;
+}
+
+.name-placeholder {
+  color: #9D9D9D;
+}
+
+.info-section {
+  margin: 0 32rpx 24rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: 22px;
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+}
+
+.info-row:first-child {
+  padding-top: 39rpx;
+  padding-bottom: 24rpx;
+}
+
+.info-row:not(:first-child):not(:last-child) {
+  padding-top: 24rpx;
+  padding-bottom: 24rpx;
+}
+
+.info-row:last-child {
+  padding-top: 24rpx;
+  padding-bottom: 39rpx;
+}
+
+.info-label {
+  font-size: 30rpx;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.info-select {
+  display: flex;
+  align-items: center;
+}
+
+.info-value {
+  font-size: 28rpx;
+  color: #000000;
+}
+
+.info-placeholder {
+  font-size: 28rpx;
+  color: #9D9D9D;
+}
+
+.info-arrow {
+  font-size: 32rpx;
+  color: #C0C0C0;
+  margin-left: 8rpx;
+  line-height: 1;
+}
+
+.info-radio-group {
+  display: flex;
+  align-items: center;
+  background: #F5F5F5;
+  border-radius: 44rpx;
+  padding: 4px;
+}
+
+.info-radio-item {
+  padding: 18rpx 48rpx;
+  border-radius: 38rpx;
+  font-size: 26rpx;
+  color: #999999;
+}
+
+.info-radio-item.active {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.date-section {
+  margin: 0 32rpx 24rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: 22px;
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+}
+
+.date-row:first-child {
+  padding-top: 39rpx;
+  padding-bottom: 24rpx;
+}
+
+.date-row:last-child {
+  padding-top: 24rpx;
+  padding-bottom: 39rpx;
+}
+
+.save-btn {
+  position: fixed;
+  bottom: 82rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 368rpx;
+  height: 114rpx;
+  line-height: 114rpx;
+  text-align: center;
+  background: #303030;
+  color: #FFFFFF;
+  font-size: 36rpx;
+  font-weight: 500;
+  border-radius: 999rpx;
+}
+
+.date-label {
+  font-size: 30rpx;
+  color: #000000;
+  flex-shrink: 0;
+}
+
+.date-select {
+  display: flex;
+  align-items: center;
+}
+
+.date-value {
+  font-size: 28rpx;
+  color: #000000;
+}
+
+.date-placeholder {
+  font-size: 28rpx;
+  color: #9D9D9D;
+}
+
+.date-arrow {
+  font-size: 32rpx;
+  color: #C0C0C0;
+  margin-left: 8rpx;
+  line-height: 1;
+}
+
+.date-picker-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+}
+
+.date-picker-content {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.date-picker-header {
+  padding: 40rpx;
+  text-align: center;
+}
+
+.date-picker-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #000000;
+}
+
+.date-picker-body {
+  padding: 0;
+  height: 330rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.date-picker-wheels {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  padding: 0 48rpx;
+}
+
+.date-picker-wheel + .date-picker-wheel {
+  margin-left: 66rpx;
+}
+
+.date-picker-wheel {
+  min-width: 140rpx;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.wheel-list {
+  position: relative;
+  z-index: 20;
+  height: 100%;
+}
+
+.wheel-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 110rpx;
+  text-align: center;
+}
+
+.wheel-text {
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 36rpx;
+  color: #CECECE;
+}
+
+.wheel-item-clip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: 5;
+  text-align: center;
+}
+
+.wheel-text-dark {
+  display: block;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 36rpx;
+  color: #121212;
+}
+
+.date-picker-indicator {
+  position: absolute;
+  top: 50%;
+  left: 48rpx;
+  right: 48rpx;
+  height: 110rpx;
+  transform: translateY(-50%);
+  background: #F4F4F4;
+  border-radius: 32rpx;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.date-picker-footer {
+  display: flex;
+  padding: 24rpx 32rpx;
+  gap: 24rpx;
+}
+
+.date-picker-btn {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+}
+
+.date-picker-btn-cancel {
+  background: #F5F5F5;
+  color: #666666;
+}
+
+.date-picker-btn-confirm {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.breed-modal-overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: flex-end;
+}
+
+.breed-modal-content {
+  width: 100%;
+  height: 700px;
+  background: #FFFFFF;
+  border-radius: 32rpx 32rpx 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.breed-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 56rpx;
+  padding-right: 32rpx;
+  padding-bottom: 32rpx;
+  padding-left: 32rpx;
+}
+
+.breed-modal-title {
+  font-size: 40rpx;
+  font-weight: 500;
+  color: #000000;
+}
+
+.breed-modal-close {
+  font-size: 36rpx;
+  color: #999999;
+  line-height: 1;
+}
+
+.breed-modal-search {
+  padding: 0 32rpx 24rpx;
+}
+
+.breed-search-wrapper {
+  position: relative;
+}
+
+.breed-search-input {
+  width: 100%;
+  height: 72rpx;
+  background: #f5f5f5;
+  border-radius: 36rpx;
+  padding: 0 72rpx 0 32rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+
+.breed-search-clear {
+  position: absolute;
+  right: 24rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36rpx;
+  height: 36rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.breed-search-clear-icon {
+  font-size: 28rpx;
+  color: #999999;
+  line-height: 1;
+}
+
+.breed-search-placeholder {
+  color: #cccccc;
+}
+
+.breed-modal-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.breed-modal-left {
+  width: 180rpx;
+  padding: 24rpx 0;
+  padding-left: 32rpx;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.breed-left-item {
+  height: 33px;
+  width: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: #999999;
+  margin: 0 0 25rpx 0;
+  border-radius: 12px;
+}
+
+.breed-left-item.active {
+  background: #000000;
+  color: #FFFFFF;
+  font-weight: 500;
+}
+
+.breed-modal-right {
+  flex: 1;
+  padding: 24rpx 30rpx 30rpx;
+  overflow-y: auto;
+}
+
+.breed-right-tag-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.breed-right-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 47%;
+  height: 100rpx;
+  background: #F8F8F8;
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 30rpx;
+}
+
+.breed-right-tag.active {
+  background: #1f1f1f;
+  color: #ffffff;
+}
+
+.custom-toast {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #FFFFFF;
+  color: #000000;
+  font-size: 28rpx;
+  padding: 24rpx 48rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.custom-toast.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+  pointer-events: auto;
+}

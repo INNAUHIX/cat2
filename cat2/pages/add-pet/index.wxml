@@ -1,0 +1,171 @@
+<wxs src="./datepicker.wxs" module="dp" />
+
+<navigation-bar title="编辑信息" showBack="{{true}}"></navigation-bar>
+
+<view class="page">
+  <view class="upload-section">
+    <view class="upload-area" bindtap="onChooseImage" wx:if="{{!petImage}}">
+      <view class="upload-icon"></view>
+      <text class="upload-title">上传宠物图片</text>
+      <text class="upload-desc">16:9 比例裁剪</text>
+    </view>
+    <image class="upload-preview" src="{{petImage}}" mode="aspectFill" bindtap="onChooseImage" wx:else></image>
+  </view>
+
+  <view class="name-section">
+    <view class="name-row">
+      <text class="name-label">名称</text>
+      <input class="name-input" placeholder="昵称" placeholder-class="name-placeholder" value="{{petName}}" bindinput="onNameInput" />
+    </view>
+  </view>
+
+  <view class="info-section">
+    <view class="info-row" bindtap="onChooseBreed">
+      <text class="info-label">品种</text>
+      <view class="info-select">
+        <text class="{{breed ? 'info-value' : 'info-placeholder'}}">{{breed || '请选择'}}</text>
+        <text class="info-arrow">›</text>
+      </view>
+    </view>
+    <view class="info-row">
+      <text class="info-label">性别</text>
+      <radio-group class="info-radio-group" bindchange="setGender">
+        <label class="info-radio-item {{gender === 'male' ? 'active' : ''}}">
+          <radio value="male" checked="{{gender === 'male'}}" hidden />雄性</label>
+        <label class="info-radio-item {{gender === 'female' ? 'active' : ''}}">
+          <radio value="female" checked="{{gender === 'female'}}" hidden />雌性</label>
+      </radio-group>
+    </view>
+    <view class="info-row">
+      <text class="info-label">是否绝育</text>
+      <radio-group class="info-radio-group" bindchange="setNeutered">
+        <label class="info-radio-item {{neutered === 'yes' ? 'active' : ''}}">
+          <radio value="yes" checked="{{neutered === 'yes'}}" hidden />是</label>
+        <label class="info-radio-item {{neutered === 'no' ? 'active' : ''}}">
+          <radio value="no" checked="{{neutered === 'no'}}" hidden />否</label>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class="date-section">
+    <view class="date-row" bindtap="openDatePicker" data-type="birth">
+      <text class="date-label">出生日期</text>
+      <view class="date-select">
+        <text class="{{birthDate ? 'date-value' : 'date-placeholder'}}">{{birthDate || '请选择'}}</text>
+        <text class="date-arrow">›</text>
+      </view>
+    </view>
+    <view class="date-row" bindtap="openDatePicker" data-type="home">
+      <text class="date-label">到家日期</text>
+      <view class="date-select">
+        <text class="{{homeDate ? 'date-value' : 'date-placeholder'}}">{{homeDate || '请选择'}}</text>
+        <text class="date-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="save-btn" bindtap="onSave">保存</view>
+
+  <view class="custom-toast {{toastVisible ? 'show' : ''}}">{{toastText}}</view>
+</view>
+
+<view class="date-picker-overlay" wx:if="{{showDatePicker}}" catchtap="closeDatePicker">
+  <view class="date-picker-content" catchtap="event.stopPropagation()">
+    <view class="date-picker-header">
+      <text class="date-picker-title">{{datePickerTitle}}</text>
+    </view>
+    <view class="date-picker-body">
+      <view class="date-picker-indicator"></view>
+      <view class="date-picker-wheels">
+        <view class="date-picker-wheel"
+          data-wheel="0"
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd">
+          <view class="wheel-list" style="transform:translateY({{wheelOffsets[0]}}rpx)">
+            <view class="wheel-item" wx:for="{{years}}" wx:key="*this" style="top:{{index * 110}}rpx">
+              <text class="wheel-text">{{item}}年</text>
+              <view class="wheel-item-clip" style="top:{{dp.clipTop(index, wheelOffsets[0])}}rpx;height:{{dp.clipHeight(index, wheelOffsets[0])}}rpx;">
+                <text class="wheel-text-dark" style="transform:translateY({{dp.textOffset(index, wheelOffsets[0])}}rpx)">{{item}}年</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="date-picker-wheel"
+          data-wheel="1"
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd">
+          <view class="wheel-list" style="transform:translateY({{wheelOffsets[1]}}rpx)">
+            <view class="wheel-item" wx:for="{{months}}" wx:key="*this" style="top:{{index * 110}}rpx">
+              <text class="wheel-text">{{item}}月</text>
+              <view class="wheel-item-clip" style="top:{{dp.clipTop(index, wheelOffsets[1])}}rpx;height:{{dp.clipHeight(index, wheelOffsets[1])}}rpx;">
+                <text class="wheel-text-dark" style="transform:translateY({{dp.textOffset(index, wheelOffsets[1])}}rpx)">{{item}}月</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="date-picker-wheel"
+          data-wheel="2"
+          bindtouchstart="onTouchStart"
+          bindtouchmove="onTouchMove"
+          bindtouchend="onTouchEnd">
+          <view class="wheel-list" style="transform:translateY({{wheelOffsets[2]}}rpx)">
+            <view class="wheel-item" wx:for="{{days}}" wx:key="*this" style="top:{{index * 110}}rpx">
+              <text class="wheel-text">{{item}}日</text>
+              <view class="wheel-item-clip" style="top:{{dp.clipTop(index, wheelOffsets[2])}}rpx;height:{{dp.clipHeight(index, wheelOffsets[2])}}rpx;">
+                <text class="wheel-text-dark" style="transform:translateY({{dp.textOffset(index, wheelOffsets[2])}}rpx)">{{item}}日</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="date-picker-footer">
+      <view class="date-picker-btn date-picker-btn-cancel" bindtap="closeDatePicker">取消</view>
+      <view class="date-picker-btn date-picker-btn-confirm" bindtap="confirmDate">确定</view>
+    </view>
+  </view>
+</view>
+
+<view class="breed-modal-overlay" wx:if="{{showBreedModal}}" catchtap="closeBreedModal">
+  <view class="breed-modal-content" catchtap="event.stopPropagation()">
+    <view class="breed-modal-header">
+      <text class="breed-modal-title">选择品种</text>
+      <text class="breed-modal-close" bindtap="closeBreedModal">✕</text>
+    </view>
+    <view class="breed-modal-search">
+      <view class="breed-search-wrapper">
+        <input class="breed-search-input" 
+          placeholder="搜索品种" 
+          placeholder-class="breed-search-placeholder"
+          value="{{searchKeyword}}" 
+          bindinput="onSearchInput" />
+        <view class="breed-search-clear" wx:if="{{searchKeyword}}" catchtap="clearSearch">
+          <text class="breed-search-clear-icon">✕</text>
+        </view>
+      </view>
+    </view>
+    <view class="breed-modal-body">
+      <view class="breed-modal-left" wx:if="{{showCategory}}">
+        <view class="breed-left-item {{selectedCategory === 'cat' ? 'active' : ''}}" 
+          data-category="cat" bindtap="selectCategory">猫</view>
+        <view class="breed-left-item {{selectedCategory === 'dog' ? 'active' : ''}}" 
+          data-category="dog" bindtap="selectCategory">狗</view>
+        <view class="breed-left-item {{selectedCategory === 'bird' ? 'active' : ''}}" 
+          data-category="bird" bindtap="selectCategory">鸟</view>
+        <view class="breed-left-item {{selectedCategory === 'rabbit' ? 'active' : ''}}" 
+          data-category="rabbit" bindtap="selectCategory">兔子</view>
+      </view>
+      <view class="breed-modal-right">
+        <view class="breed-right-tag-wrapper">
+          <view class="breed-right-tag {{breed === item.name ? 'active' : ''}}" 
+            wx:for="{{filteredBreeds}}" 
+            wx:key="name"
+            data-breed="{{item.name}}"
+            bindtap="selectBreed">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

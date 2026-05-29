@@ -1,0 +1,30 @@
+<navigation-bar title="我的" showBack="{{false}}"></navigation-bar>
+<view class="page">
+  <view class="content">
+    <view class="pet-card" wx:if="{{petInfo}}">
+      <image class="pet-avatar" src="{{petImage}}" mode="aspectFill"></image>
+      <view class="pet-info">
+        <text class="pet-name">{{petName}}</text>
+        <text class="pet-breed">{{breed}}</text>
+      </view>
+      <view class="edit-btn" bindtap="onEditTap">编辑信息</view>
+    </view>
+
+    <view class="add-pet-card" bindtap="onEditTap" wx:else>
+      <view class="add-icon"></view>
+      <text class="add-text">添加宠物</text>
+      <text class="add-desc">开始记录毛孩子的成长点滴</text>
+    </view>
+
+    <view class="menu-section">
+      <view class="menu-item">
+        <text class="menu-label">关于我们</text>
+        <text class="menu-arrow">›</text>
+      </view>
+      <view class="menu-item">
+        <text class="menu-label">设置</text>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+</view>

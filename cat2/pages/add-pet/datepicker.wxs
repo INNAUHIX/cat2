@@ -1,0 +1,35 @@
+var H = 110;
+var IND_TOP = 110;
+var IND_BOT = 220;
+
+function itemTop(idx, off) {
+  return off + idx * H;
+}
+
+function clipTop(idx, off) {
+  var itemTop = off + idx * H;
+  var top = Math.max(itemTop, IND_TOP) - itemTop;
+  return top > 0 ? top : 0;
+}
+
+function clipHeight(idx, off) {
+  var itemTop = off + idx * H;
+  var itemBot = itemTop + H;
+  var intersectTop = Math.max(itemTop, IND_TOP);
+  var intersectBot = Math.min(itemBot, IND_BOT);
+  var h = intersectBot - intersectTop;
+  return h > 0 ? h : 0;
+}
+
+function textOffset(idx, off) {
+  var itemTop = off + idx * H;
+  var top = Math.max(itemTop, IND_TOP) - itemTop;
+  return top > 0 ? -top : 0;
+}
+
+module.exports = {
+  itemTop: itemTop,
+  clipTop: clipTop,
+  clipHeight: clipHeight,
+  textOffset: textOffset
+};
